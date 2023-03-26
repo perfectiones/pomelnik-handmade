@@ -1,0 +1,208 @@
+@import "./src/style/null.css";
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+/* HEADER */
+
+header {
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+  position: relative;
+  z-index: 10;
+}
+
+.header__burger {
+  display: none;
+}
+
+header .header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__container .header__logo {
+  width: 250px;
+}
+
+.header__mob-nav {
+  display: none;
+  position: absolute;
+}
+
+.header__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.header__list {
+  display: flex;
+  justify-content: space-evenly;
+
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.header__list .list__item {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header__list .list__item a {
+  display: inline-block; /*делаем чтобы наша ссылка из строчного элемента превратилась в строчно-блочный 
+    line-height: 1; /*Задаём высоту строки (можно в пикселях)*/
+}
+
+.header__list .list__item a:after {
+  display: block; /*превращаем его в блочный элемент*/
+  content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+  height: 3px; /*задаём высоту линии*/
+  width: 0%; /*задаём начальную ширину элемента (линии)*/
+  background-color: #c44320; /*цвет фона элемента*/
+  transition: width 0.4s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+}
+
+.header__list .list__item a:hover:after,
+.header__list .list__item a:focus:after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  header .header__container {
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+  }
+  main {
+    position: relative;
+  }
+
+  .header__list {
+    display: none;
+  }
+
+  .container {
+    padding: 0 5px;
+  }
+
+  .header__container .header__logo {
+    width: 180px;
+  }
+
+  .header__burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 10px;
+
+    cursor: pointer;
+  }
+  .header__burger .line {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    transition: all 0.3s;
+  }
+
+  .header__burger.active .line:nth-child(1) {
+    transform: rotate(40deg);
+    transform-origin: 0%;
+  }
+
+  .header__burger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__burger.active .line:nth-child(3) {
+    transform: rotate(-40deg);
+    transform-origin: 0%;
+  }
+}
+@media (max-width: 500px) {
+  .header__container .header__logo {
+    width: 35%;
+  }
+}
+
+/* MAIN */
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.wrapper > * {
+  min-width: 0;
+}
+
+.mob-nav {
+  display: none;
+  justify-content: center;
+
+  padding-top: 25px;
+
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.mob-nav:active{
+  color: #c44320;
+}
+
+.mob-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  text-align: center;
+}
+
+/* SWIPER */
+
+.swiper{
+  max-width: 1160px;
+}
+
+.swiper-slide img{
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .mob-nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffff;
+    z-index: 3;
+
+    transition: right 0.7s;
+  }
+
+  .mob-nav.active {
+    right: 0%;
+  }
+}
+@media (max-width: 500px) {
+}
